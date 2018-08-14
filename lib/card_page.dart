@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 
-class FavouritesPage extends StatelessWidget {
+class CardPage extends StatelessWidget {
+  
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     // Get all contacts
     // Get all contacts
     return Scaffold(
-      floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.contacts), onPressed: () {}),
       body: Center(
         child: RaisedButton(
-            child: Text('Favourites'),
+            child: Text('Card page'),
             onPressed: () {
               print('called');
+            
             }),
       ),
     );

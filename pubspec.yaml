@@ -10,6 +10,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   contacts_service: any
   camera: ^0.2.1
+  shared_preferences: 0.4.2
 
 dev_dependencies:
   flutter_test:

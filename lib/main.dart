@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'contactspage.dart';
+
 import 'more_page.dart';
 import 'favourites_page.dart';
 import 'recents_page.dart';
+import 'card_page.dart';
 
 void main() => runApp(new MyApp());
 
@@ -30,8 +31,8 @@ class MyApp extends StatelessWidget {
             bottom: TabBar(
               tabs: [
                 Tab(icon: Icon(Icons.favorite)),
-                Tab(icon: Icon(Icons.call)),
-                Tab(icon: Icon(Icons.contacts)),
+                Tab(icon: Icon(Icons.restore)),
+                Tab(icon: Icon(Icons.card_giftcard)),
                 Tab(icon: Icon(Icons.bubble_chart))
               ],
             ),
@@ -41,7 +42,8 @@ class MyApp extends StatelessWidget {
             children: [
               FavouritesPage(),
               RecentsPage(),
-              ContactsPage(),
+              CardPage(),
+              // ContactsPage(),
               MorePage(),
             ],
           ),

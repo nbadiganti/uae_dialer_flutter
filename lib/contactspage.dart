@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 import 'services/contacts_services.dart';
+import 'main.dart';
 
 class ContactsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(routes: <String, WidgetBuilder>{
-      '/add': (BuildContext context) => AddContactPage()
-    }, home: ContactListPage());
+    return MaterialApp(
+        routes: <String, WidgetBuilder>{
+          '/add': (BuildContext context) => AddContactPage()
+        },
+        theme: new ThemeData(
+            // This is the theme of your application.
+            //
+            // Try running your application with "flutter run". You'll see the
+            // application has a blue toolbar. Then, without quitting the app, try
+            // changing the primarySwatch below to Colors.green and then invoke
+            // "hot reload" (press "r" in the console where you ran "flutter run",
+            // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
+            // counter didn't reset back to zero; the application is not restarted.
+            primarySwatch: Colors.red,
+            accentColor: Colors.white),
+        home: ContactListPage());
   }
 }
 
@@ -18,7 +32,7 @@ class ContactListPage extends StatefulWidget {
 class _ContactListPageState extends State<ContactListPage> {
   Iterable<Contact> _contacts;
 
-  @override 
+  @override
   initState() {
     super.initState();
     refreshContacts();
@@ -34,7 +48,18 @@ class _ContactListPageState extends State<ContactListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(title: Text('Contacts')),
+      appBar: AppBar(
+          title: Text('Contacts'),
+          leading: new IconButton(
+              icon: new Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => MyApp(),
+              ),
+            );
+              })),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.dialpad),
           onPressed: () {
@@ -63,7 +88,6 @@ class _ContactListPageState extends State<ContactListPage> {
                                 ? c.displayName?.substring(0, 2)
                                 : "")),
                     title: Text(c.displayName ?? ""),
-                    
                   );
                 },
               )
@@ -80,14 +104,14 @@ class ContactDetailsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar:
-        //     AppBar(title: Text(_contact.displayName ?? ""), actions: <Widget>[
-        //   FlatButton(
-        //       child: Icon(Icons.delete),
-        //       onPressed: () {
-        //         ContactsService.deleteContact(_contact);
-        //       })
-        // ]),
+        appBar:
+            AppBar(title: Text(_contact.displayName ?? ""), actions: <Widget>[
+          FlatButton(
+              child: Icon(Icons.delete),
+              onPressed: () {
+                ContactsService.deleteContact(_contact);
+              })
+        ]),
         body: SafeArea(
           child: ListView(
             children: <Widget>[
